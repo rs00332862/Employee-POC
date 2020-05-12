@@ -18,6 +18,9 @@
 		F9C8B6A22469984500F6723B /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6A12469984500F6723B /* Employee.swift */; };
 		F9C8B6A524699CA400F6723B /* EmployeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6A424699CA400F6723B /* EmployeeCell.swift */; };
 		F9C8B6AA2469C17100F6723B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6A92469C17000F6723B /* Constant.swift */; };
+		F9C8B6AD246AC67F00F6723B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6AC246AC67F00F6723B /* NetworkManager.swift */; };
+		F9C8B6B0246AC73400F6723B /* EmployeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6AF246AC73400F6723B /* EmployeeViewModel.swift */; };
+		F9C8B6B2246AE76E00F6723B /* UIImageView+URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6B1246AE76E00F6723B /* UIImageView+URLImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		F9C8B6A12469984500F6723B /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		F9C8B6A424699CA400F6723B /* EmployeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeCell.swift; sourceTree = "<group>"; };
 		F9C8B6A92469C17000F6723B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F9C8B6AC246AC67F00F6723B /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F9C8B6AF246AC73400F6723B /* EmployeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewModel.swift; sourceTree = "<group>"; };
+		F9C8B6B1246AE76E00F6723B /* UIImageView+URLImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,8 @@
 		F9C8B66F24695A2400F6723B /* Employee POC */ = {
 			isa = PBXGroup;
 			children = (
+				F9C8B6AE246AC70B00F6723B /* View Model */,
+				F9C8B6AB246AC66A00F6723B /* Network Manager */,
 				F9C8B6A62469C04800F6723B /* Utilities */,
 				F9C8B6A324699C7800F6723B /* View */,
 				F9C8B6A02469982E00F6723B /* Model */,
@@ -156,9 +164,26 @@
 		F9C8B6A62469C04800F6723B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F9C8B6B1246AE76E00F6723B /* UIImageView+URLImage.swift */,
 				F9C8B6A92469C17000F6723B /* Constant.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F9C8B6AB246AC66A00F6723B /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F9C8B6AC246AC67F00F6723B /* NetworkManager.swift */,
+			);
+			path = "Network Manager";
+			sourceTree = "<group>";
+		};
+		F9C8B6AE246AC70B00F6723B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9C8B6AF246AC73400F6723B /* EmployeeViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,11 +317,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C8B6B2246AE76E00F6723B /* UIImageView+URLImage.swift in Sources */,
 				F9C8B6AA2469C17100F6723B /* Constant.swift in Sources */,
 				F9C8B67524695A2400F6723B /* EmployeeListViewController.swift in Sources */,
 				F9C8B6A22469984500F6723B /* Employee.swift in Sources */,
+				F9C8B6AD246AC67F00F6723B /* NetworkManager.swift in Sources */,
 				F9C8B67124695A2400F6723B /* AppDelegate.swift in Sources */,
 				F9C8B67324695A2400F6723B /* SceneDelegate.swift in Sources */,
+				F9C8B6B0246AC73400F6723B /* EmployeeViewModel.swift in Sources */,
 				F9C8B6A524699CA400F6723B /* EmployeeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

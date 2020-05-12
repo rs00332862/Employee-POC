@@ -10,16 +10,18 @@ import Foundation
 
 struct EmployeeDataMadel: Decodable{
     let employeeData: [Employee]
+    let webServiceResponse : String
     
     enum CodingKeys: String, CodingKey {
         case employeeData = "data"
+        case webServiceResponse = "status"
     }
 }
 
 struct Employee: Decodable {
     let employeeName: String
-    let employeeAge: Int
-    let employeeSalary: Double
+    let employeeAge: String
+    let employeeSalary: String
     let employeeProfileImageURL: String
     
     enum CodingKeys: String, CodingKey {

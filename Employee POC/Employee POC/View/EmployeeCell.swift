@@ -16,9 +16,20 @@ class EmployeeCell: UITableViewCell {
     @IBOutlet weak var employeeAgeLabel: UILabel!
     @IBOutlet weak var employeeSalaryLabel: UILabel!
 
-    
     func setEmployeeCell() {
-        employeeNameLabel.text = "Rohit Shivankar"
+        let employeeData = EmployeeViewModel().getEmployeeDataObject(forCellNumber: self.tag) as Employee
+        employeeNameLabel.text = employeeData.employeeName
+        employeeAgeLabel.text = "Age : \(employeeData.employeeAge)"
+        employeeSalaryLabel.text = "Salary : \(numberFormaterWith(string: employeeData.employeeSalary))"
+        employeeImageView.loadImageFromURL(employeeData.employeeProfileImageURL, placeHolder: UIImage (named: "NoImage"))
+    }
+    
+    private func numberFormaterWith(string: String) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.currency
+        numberFormatter.groupingSeparator = ","
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:Int(string) ?? 0)) ?? ""
+        return formattedNumber
     }
 }
 
