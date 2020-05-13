@@ -31,3 +31,14 @@ struct Employee: Decodable {
         case employeeProfileImageURL = "profile_image"
     }
 }
+
+
+struct WebServiceSucess: Decodable{
+    let responseMessage: String
+    let webServiceResponseStatus : String
+    
+    enum CodingKeys: String, CodingKey {
+        case responseMessage = "message"
+        case webServiceResponseStatus = "status"
+    }
+}

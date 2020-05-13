@@ -13,7 +13,7 @@ class EmployeeViewModel {
     static var filteredEmployeesList: [Employee] = [Employee]()
     
     func getEmployeeList(completion: @escaping (Result<Bool, Error>) -> Void) {
-        NetworkManager.sharedInstance.getDataFromWebService(urlString: Constant.getEmployeeListURL) { (responseData: Result<EmployeeDataMadel,Error>) in
+        NetworkManager.sharedInstance.webserviceRequest(withType: "Get", andUrlString: Constant.getEmployeeListURL) { (responseData: Result<EmployeeDataMadel,Error>) in
             DispatchQueue.main.async {
                 switch(responseData) {
                 case .success(let responseEmployeeList):
@@ -53,5 +53,18 @@ class EmployeeViewModel {
             return employee.employeeName.lowercased().contains(string.lowercased())
         }
         completion()
+    }
+    
+    func deleteEmployeeFromList(employeeID: String, completion: @escaping (Result<WebServiceSucess, Error>) -> Void) {
+        NetworkManager.sharedInstance.webserviceRequest(withType: "Delete", andUrlString: Constant.deleteEmployeeFromListURL) { (responseData: Result<WebServiceSucess, Error>) in
+            DispatchQueue.main.async {
+                switch(responseData) {
+                case .success(let responseData):
+                    completion(.success(responseData))
+                case.failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }

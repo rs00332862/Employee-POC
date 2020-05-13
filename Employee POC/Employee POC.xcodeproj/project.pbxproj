@@ -21,6 +21,8 @@
 		F9C8B6AD246AC67F00F6723B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6AC246AC67F00F6723B /* NetworkManager.swift */; };
 		F9C8B6B0246AC73400F6723B /* EmployeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6AF246AC73400F6723B /* EmployeeViewModel.swift */; };
 		F9C8B6B2246AE76E00F6723B /* UIImageView+URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6B1246AE76E00F6723B /* UIImageView+URLImage.swift */; };
+		F9C8B6B6246BEBFE00F6723B /* EmployeeAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8B6B5246BEBFE00F6723B /* EmployeeAddViewController.swift */; };
+		F9C8B6B8246C0DCE00F6723B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9C8B6B7246C0DCE00F6723B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		F9C8B6AC246AC67F00F6723B /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F9C8B6AF246AC73400F6723B /* EmployeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeViewModel.swift; sourceTree = "<group>"; };
 		F9C8B6B1246AE76E00F6723B /* UIImageView+URLImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLImage.swift"; sourceTree = "<group>"; };
+		F9C8B6B5246BEBFE00F6723B /* EmployeeAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeAddViewController.swift; sourceTree = "<group>"; };
+		F9C8B6B7246C0DCE00F6723B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,7 @@
 			children = (
 				F9C8B6B1246AE76E00F6723B /* UIImageView+URLImage.swift */,
 				F9C8B6A92469C17000F6723B /* Constant.swift */,
+				F9C8B6B7246C0DCE00F6723B /* Localizable.strings */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 		F9C8B6B4246BEAEA00F6723B /* Add Employee */ = {
 			isa = PBXGroup;
 			children = (
+				F9C8B6B5246BEBFE00F6723B /* EmployeeAddViewController.swift */,
 			);
 			path = "Add Employee";
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9C8B67D24695A2D00F6723B /* LaunchScreen.storyboard in Resources */,
+				F9C8B6B8246C0DCE00F6723B /* Localizable.strings in Resources */,
 				F9C8B67A24695A2D00F6723B /* Assets.xcassets in Resources */,
 				F9C8B67824695A2400F6723B /* Main.storyboard in Resources */,
 			);
@@ -341,6 +348,7 @@
 				F9C8B67124695A2400F6723B /* AppDelegate.swift in Sources */,
 				F9C8B67324695A2400F6723B /* SceneDelegate.swift in Sources */,
 				F9C8B6B0246AC73400F6723B /* EmployeeViewModel.swift in Sources */,
+				F9C8B6B6246BEBFE00F6723B /* EmployeeAddViewController.swift in Sources */,
 				F9C8B6A524699CA400F6723B /* EmployeeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -89,6 +89,25 @@ extension EmployeeListViewController: UITableViewDelegate,UITableViewDataSource 
         cell.setEmployeeCellwith(isFilteringOn: isFiltering)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            //print("Delete method called")
+            employeeViewModel.deleteEmployeeFromList(employeeID: "", completion: {result in
+                switch(result) {
+                case .success(let serviceResponse):
+                    self.displayErrorMessageWith(messageString: serviceResponse.responseMessage)
+                case .failure(let error):
+                    self.displayErrorMessageWith(messageString: error.localizedDescription)
+                }
+            })
+        }
+    }
 }
 
 extension EmployeeListViewController: UISearchResultsUpdating {

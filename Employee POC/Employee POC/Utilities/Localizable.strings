@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Employee POC
+
+  Created by Rohit on 5/13/20.
+  Copyright © 2020 Rohit. All rights reserved.
+*/
+"ErrorHeader" = "Employee POC";
+"OkButton" = "Ok";

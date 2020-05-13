@@ -11,6 +11,9 @@ import UIKit
 
 class Constant {
     static let getEmployeeListURL = "http://dummy.restapiexample.com/api/v1/employees"
+    static let deleteEmployeeFromListURL = "http://dummy.restapiexample.com/api/v1/delete/1"
+    
     static let employeeCustomCellIdentifier = "EmployeeCell"
+    
 
 }
