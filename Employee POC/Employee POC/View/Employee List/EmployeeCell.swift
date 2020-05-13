@@ -16,8 +16,8 @@ class EmployeeCell: UITableViewCell {
     @IBOutlet weak var employeeAgeLabel: UILabel!
     @IBOutlet weak var employeeSalaryLabel: UILabel!
 
-    func setEmployeeCell() {
-        let employeeData = EmployeeViewModel().getEmployeeDataObject(forCellNumber: self.tag) as Employee
+    func setEmployeeCellwith(isFilteringOn: Bool) {
+        let employeeData = EmployeeViewModel().getEmployeeDataObject(forCellNumber: self.tag, andIsFilteringOn:isFilteringOn) as Employee
         employeeNameLabel.text = employeeData.employeeName
         employeeAgeLabel.text = "Age : \(employeeData.employeeAge)"
         employeeSalaryLabel.text = "Salary : \(numberFormaterWith(string: employeeData.employeeSalary))"
