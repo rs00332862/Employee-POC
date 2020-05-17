@@ -164,7 +164,8 @@
 		F9C8B6A324699C7800F6723B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F9C8B6B3246BEAD000F6723B /* Employee List */,
+				F9C8B6A424699CA400F6723B /* EmployeeCell.swift */,
+				F9C8B67424695A2400F6723B /* EmployeeListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,15 +195,6 @@
 				F9C8B6AF246AC73400F6723B /* EmployeeViewModel.swift */,
 			);
 			path = "View Model";
-			sourceTree = "<group>";
-		};
-		F9C8B6B3246BEAD000F6723B /* Employee List */ = {
-			isa = PBXGroup;
-			children = (
-				F9C8B6A424699CA400F6723B /* EmployeeCell.swift */,
-				F9C8B67424695A2400F6723B /* EmployeeListViewController.swift */,
-			);
-			path = "Employee List";
 			sourceTree = "<group>";
 		};
 		F9C8B6BD247160F100F6723B /* Add Employee */ = {
