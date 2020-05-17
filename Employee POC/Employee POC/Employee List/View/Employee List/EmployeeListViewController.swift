@@ -13,6 +13,7 @@ class EmployeeListViewController: UIViewController {
     @IBOutlet weak var employeeTableView: UITableView!
     var employeeViewModel = EmployeeViewModel()
     let searchController = UISearchController(searchResultsController: nil)
+    var activityView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +28,20 @@ class EmployeeListViewController: UIViewController {
     /// Use this method to perform all intial activites as view controller is loaded like setting up UI and making service call
     private func performInitialSetup() {
         self.title = "Employee List"
+        self.addActivityIndicator()
         employeeTableView.delegate = self
         employeeTableView.dataSource = self
-        getEmployeeDataFromViewModel()
-        setUpSearchViewController()
+        self.getEmployeeDataFromViewModel()
+        self.setUpSearchViewController()
     }
     
     /// Fetch employee data from view model class
     ///
     /// Use this method to get data from ViewModel class and manage its response status
     private func getEmployeeDataFromViewModel() {
+        self.activityView?.startAnimating()
         employeeViewModel.getEmployeeList {result in
+            self.activityView?.stopAnimating()
             switch(result) {
             case .success:
                 if(self.employeeViewModel.getCountOfEmployeeyData(IsFilteringOn: false) > 0) {
@@ -54,7 +58,7 @@ class EmployeeListViewController: UIViewController {
     func setUpSearchViewController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Employees"
+        searchController.searchBar.placeholder = NSLocalizedString("SearchTextFieldPlaceHolderText", comment: "")
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -66,7 +70,7 @@ class EmployeeListViewController: UIViewController {
     var isFiltering: Bool {
         return searchController.isActive && !isSearchBarEmpty
     }
-        
+    
     /// Method to dsiplay error messages on veiwcontroller
     ///
     /// - Parameter messageString: String to be used while displaying error message
@@ -74,6 +78,27 @@ class EmployeeListViewController: UIViewController {
         let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: messageString , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteEmployeeData(indexPath: Int) {
+        
+         self.activityView?.startAnimating()
+        employeeViewModel.deleteEmployeeFromList(forCellNumber: indexPath, IsFilteringOn: isFiltering, completion: {result in
+             self.activityView?.stopAnimating()
+            switch(result) {
+            case .success(let serviceResponse):
+                self.displayErrorMessageWith(messageString: serviceResponse.responseMessage)
+            case .failure(let error):
+                self.displayErrorMessageWith(messageString: error.localizedDescription)
+            }
+        })
+    }
+    
+    func addActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        activityView?.hidesWhenStopped = true
+        view.addSubview(activityView!)
     }
     
 }
@@ -93,19 +118,12 @@ extension EmployeeListViewController: UITableViewDelegate,UITableViewDataSource 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
+            // handle delete
             //print("Delete method called")
-            employeeViewModel.deleteEmployeeFromList(employeeID: "", completion: {result in
-                switch(result) {
-                case .success(let serviceResponse):
-                    self.displayErrorMessageWith(messageString: serviceResponse.responseMessage)
-                case .failure(let error):
-                    self.displayErrorMessageWith(messageString: error.localizedDescription)
-                }
-            })
+            self.deleteEmployeeData(indexPath: indexPath.row)
         }
     }
 }

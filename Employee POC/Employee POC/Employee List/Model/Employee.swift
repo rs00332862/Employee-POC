@@ -23,17 +23,19 @@ struct Employee: Decodable {
     let employeeAge: String
     let employeeSalary: String
     let employeeProfileImageURL: String
+    let employeeID: String
     
     enum CodingKeys: String, CodingKey {
         case employeeName = "employee_name"
         case employeeAge = "employee_age"
         case employeeSalary = "employee_salary"
         case employeeProfileImageURL = "profile_image"
+        case employeeID = "id"
     }
 }
 
 
-struct WebServiceSucess: Decodable{
+struct deleteServiceModel: Decodable{
     let responseMessage: String
     let webServiceResponseStatus : String
     

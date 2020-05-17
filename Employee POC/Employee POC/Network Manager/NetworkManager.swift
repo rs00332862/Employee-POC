@@ -30,10 +30,15 @@ class NetworkManager {
         }.resume()
     }
     
-    func webserviceRequest<T: Decodable>(withType: String, andUrlString: String, completion: @escaping (Result<T, Error>) -> Void) {
-        guard let webServiceURL = URL.init(string: andUrlString) else { return }
+    func webserviceRequest<T: Decodable>(withType: String, urlString: String, requestData: Data, completion: @escaping (Result<T, Error>) -> Void) {
+        guard let webServiceURL = URL.init(string: urlString) else { return }
         var request = URLRequest(url: webServiceURL)
         request.httpMethod = withType
+        if(withType == "POST"){
+            request.httpBody = requestData
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let errorObject = error {
                 completion(.failure(errorObject))
@@ -48,5 +53,42 @@ class NetworkManager {
                 }
             }
         }.resume()
+    }
+    
+    func getEmployeeList(completion: @escaping (Result<EmployeeDataMadel,Error>) -> Void) {
+        let urlString = Constant.getEmployeeListURL
+        webserviceRequest(withType: "Get", urlString: urlString, requestData: Data()) { (responseData:  Result<EmployeeDataMadel,Error>) in
+            switch(responseData) {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func deleteEmployeeFromList(employeeID: String, completion: @escaping (Result<deleteServiceModel,Error>) -> Void) {
+        let urlString = Constant.deleteEmployeeFromListURL+employeeID
+        webserviceRequest(withType: "Delete", urlString: urlString, requestData: Data()) { (responseData:  Result<deleteServiceModel,Error>) in
+            switch(responseData) {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func createNewEmployee(employeeData: NewEmployee, completion: @escaping (Result<NewEmployeeResponseModel, Error>) -> Void) {
+        let urlString = Constant.saveEmployeeDataURL
+        guard let requestBody = try? JSONEncoder().encode(employeeData) else { return }
+        webserviceRequest(withType: "POST", urlString: urlString, requestData: requestBody) { (responseData:  Result<NewEmployeeResponseModel,Error>) in
+            switch(responseData) {
+            case .success(let result):
+                completion(.success(result))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

@@ -7,3 +7,5 @@
 */
 "ErrorHeader" = "Employee POC";
 "OkButton" = "Ok";
+"EmployeeAddedSuccess" = "Record successfully added";
+"SearchTextFieldPlaceHolderText" = "Search Employees";

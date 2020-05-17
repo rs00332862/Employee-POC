@@ -13,7 +13,8 @@ class EmployeeViewModel {
     static var filteredEmployeesList: [Employee] = [Employee]()
     
     func getEmployeeList(completion: @escaping (Result<Bool, Error>) -> Void) {
-        NetworkManager.sharedInstance.webserviceRequest(withType: "Get", andUrlString: Constant.getEmployeeListURL) { (responseData: Result<EmployeeDataMadel,Error>) in
+        
+        NetworkManager.sharedInstance.getEmployeeList(){ (responseData: Result<EmployeeDataMadel,Error>) in
             DispatchQueue.main.async {
                 switch(responseData) {
                 case .success(let responseEmployeeList):
@@ -55,8 +56,15 @@ class EmployeeViewModel {
         completion()
     }
     
-    func deleteEmployeeFromList(employeeID: String, completion: @escaping (Result<WebServiceSucess, Error>) -> Void) {
-        NetworkManager.sharedInstance.webserviceRequest(withType: "Delete", andUrlString: Constant.deleteEmployeeFromListURL) { (responseData: Result<WebServiceSucess, Error>) in
+    func deleteEmployeeFromList(forCellNumber: Int, IsFilteringOn: Bool, completion: @escaping (Result<deleteServiceModel, Error>) -> Void) {
+        
+        var employeeID = "0"
+        if(IsFilteringOn) {
+            employeeID = EmployeeViewModel.filteredEmployeesList[forCellNumber].employeeID
+        } else {
+            employeeID = EmployeeViewModel.employeeList[forCellNumber].employeeID
+        }
+        NetworkManager.sharedInstance.deleteEmployeeFromList(employeeID: employeeID) { (responseData: Result<deleteServiceModel, Error>) in
             DispatchQueue.main.async {
                 switch(responseData) {
                 case .success(let responseData):
@@ -68,3 +76,4 @@ class EmployeeViewModel {
         }
     }
 }
+
