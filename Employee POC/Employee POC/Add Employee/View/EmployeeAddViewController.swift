@@ -30,12 +30,13 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
         addActivityIndicator()
     }
     
-    //Calls this function when the tap is recognized.
+    //Calls this function when the tap is recognized on view to discmiss keyboard 
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
+    //method to initiate save employee data service call
     @IBAction func saveEmployeeDetails(_ sender: Any) {
         if (validateTextFields()) {
             view.endEditing(true)
@@ -53,12 +54,14 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
+    //method to clear data on view controller once data is successfully added via web service
     func clearDataFromView() {
         employeeNameTextField.text = ""
         employeeAgeTextField.text = ""
         employeeSalaryTextField.text = ""
     }
     
+    //method to validate data on addview controller
     func validateTextFields() -> Bool {
         let employeeName = employeeNameTextField.text
         if (employeeName == "") {
@@ -108,6 +111,26 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
         displayLabel.text = massage
     }
     
+
+    
+    /// Method to dsiplay error messages on veiwcontroller
+    ///
+    /// - Parameter messageString: String to be used while displaying error message
+    func displayErrorMessageWith(messageString:String) {
+        let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: messageString , preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    ///function to add activity indicator on view controller
+    func addActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        activityView?.hidesWhenStopped = true
+        view.addSubview(activityView!)
+    }
+    
+    //MARK: - Textfield Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == employeeNameTextField {
             textField.resignFirstResponder()
@@ -120,23 +143,9 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
         }
         return true
     }
-    
-    /// Method to dsiplay error messages on veiwcontroller
-    ///
-    /// - Parameter messageString: String to be used while displaying error message
-    func displayErrorMessageWith(messageString:String) {
-        let alert = UIAlertController(title: NSLocalizedString("ErrorHeader", comment: ""), message: messageString , preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: ""), style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func addActivityIndicator() {
-        activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
-        activityView?.hidesWhenStopped = true
-        view.addSubview(activityView!)
-    }
 }
+
+//MARK: - UIBUtton extension
 @IBDesignable extension UIButton {
     
     @IBInspectable var borderWidth: CGFloat {

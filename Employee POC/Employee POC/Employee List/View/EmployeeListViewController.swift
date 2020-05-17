@@ -55,6 +55,7 @@ class EmployeeListViewController: UIViewController {
         }
     }
     
+    /// Method to setup search view controller on view controller
     func setUpSearchViewController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -80,8 +81,10 @@ class EmployeeListViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    ///function to initiiate delete employee data webservice call
+    ///
+    /// - Parameter indexPath: indexPath to indicate row number which needs to be deleted
     func deleteEmployeeData(indexPath: Int) {
-        
          self.activityView?.startAnimating()
         employeeViewModel.deleteEmployeeFromList(forCellNumber: indexPath, IsFilteringOn: isFiltering, completion: {result in
              self.activityView?.stopAnimating()
@@ -94,6 +97,7 @@ class EmployeeListViewController: UIViewController {
         })
     }
     
+    ///function to add activity indicator on view controller
     func addActivityIndicator() {
         activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         activityView?.center =  CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
@@ -102,6 +106,8 @@ class EmployeeListViewController: UIViewController {
     }
     
 }
+
+//MARK: - UITableView Delegate
 
 extension EmployeeListViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,6 +134,7 @@ extension EmployeeListViewController: UITableViewDelegate,UITableViewDataSource 
     }
 }
 
+//MARK: - UISearchBar Delegate
 extension EmployeeListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
