@@ -126,6 +126,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Employee Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T1i-D8-qYw">
                                 <rect key="frame" x="44" y="179" width="326" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="employeeNameTextField"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="FZ9-uk-zYD"/>
                                 </constraints>
@@ -137,6 +138,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Employee Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJc-KY-F3w">
                                 <rect key="frame" x="44" y="258" width="326" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="employeeAgeTextField"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="G0Y-LA-l4e"/>
                                 </constraints>
@@ -170,6 +172,7 @@
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter proper employee name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoX-9a-uAY">
                                 <rect key="frame" x="44" y="221" width="303" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="employeeNameErrorLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3rR-16-dXn"/>
                                 </constraints>
@@ -179,6 +182,7 @@
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter proper employee age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRZ-Pb-hri">
                                 <rect key="frame" x="44" y="300" width="303" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="employeeAgeErrorLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="pSo-2W-VKo"/>
                                 </constraints>
@@ -188,6 +192,7 @@
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter proper employee salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zew-uI-W09">
                                 <rect key="frame" x="44" y="383" width="303" height="21"/>
+                                <accessibility key="accessibilityConfiguration" identifier="employeeSalaryErrorLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="5ie-gi-TRC"/>
                                 </constraints>
@@ -197,6 +202,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Employee Salary" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ixL-Ts-EYh">
                                 <rect key="frame" x="44" y="341" width="326" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="employeeSalaryTextField"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Be6-jZ-baN"/>
                                 </constraints>

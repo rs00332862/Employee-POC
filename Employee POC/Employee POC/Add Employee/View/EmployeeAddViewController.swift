@@ -97,7 +97,7 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
             return false
         }
         if (validator.validateSalary(salary: employeeSalary!) == false) {
-            displayErrorLabelFor(displayLabel: employeeSalaryErrorLabel, and: "Please enter valid salary format")
+            displayErrorLabelFor(displayLabel: employeeSalaryErrorLabel, and: "Please enter valid salary")
             employeeSalaryTextField.becomeFirstResponder()
             return false
         }
