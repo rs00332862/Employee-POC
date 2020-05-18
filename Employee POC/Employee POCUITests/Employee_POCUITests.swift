@@ -23,6 +23,7 @@ class Employee_POCUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    // to validate add employee name field
     func testAddEmployeeNameFieldsValidation() {
         
         app.navigationBars["Employee List"].buttons["Add"].tap()
@@ -40,40 +41,40 @@ class Employee_POCUITests: XCTestCase {
         XCTAssertFalse(employeeNameErrorLabel.exists)
     }
     
+    // to validate add employee age field
     func testAddEmployeeEmployeeAgeValidation() {
         
         app.navigationBars["Employee List"].buttons["Add"].tap()
         app/*@START_MENU_TOKEN@*/.textFields["employeeNameTextField"]/*[[".textFields[\"Employee Name\"]",".textFields[\"employeeNameTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.textFields["employeeNameTextField"]/*[[".textFields[\"Employee Name\"]",".textFields[\"employeeNameTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.typeText("Rohit")
-        let employeeagetextfieldTextField = app/*@START_MENU_TOKEN@*/.textFields["employeeAgeTextField"]/*[[".textFields[\"Employee Age\"]",".textFields[\"employeeAgeTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        employeeagetextfieldTextField.tap()
-        // employeeagetextfieldTextField.tap()
-        employeeagetextfieldTextField.typeText("23@")
+        let employeeAgeTextField = app/*@START_MENU_TOKEN@*/.textFields["employeeAgeTextField"]/*[[".textFields[\"Employee Age\"]",".textFields[\"employeeAgeTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        employeeAgeTextField.tap()
+        employeeAgeTextField.typeText("23@")
         let submitButton = app.buttons["Submit"]
         submitButton.tap()
         XCTAssertEqual(app.staticTexts["employeeAgeErrorLabel"].label, "Please enter valid age")
-        employeeagetextfieldTextField.clearAndEnterText(text: "23")
+        employeeAgeTextField.clearAndEnterText(text: "23")
         submitButton.tap()
         XCTAssertFalse(app.staticTexts["employeeAgeErrorLabel"].exists)
     }
     
-    
+    // to validate add employee salary field
     func testtestAddEmployeeEmployeeSalaryValidation(){
         
         app.navigationBars["Employee List"].buttons["Add"].tap()
         app/*@START_MENU_TOKEN@*/.textFields["employeeNameTextField"]/*[[".textFields[\"Employee Name\"]",".textFields[\"employeeNameTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.textFields["employeeNameTextField"]/*[[".textFields[\"Employee Name\"]",".textFields[\"employeeNameTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.typeText("Rohit")
-        let employeeagetextfieldTextField = app/*@START_MENU_TOKEN@*/.textFields["employeeAgeTextField"]/*[[".textFields[\"Employee Age\"]",".textFields[\"employeeAgeTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        employeeagetextfieldTextField.tap()
-        employeeagetextfieldTextField.typeText("23")
-        let employeeSalarytextfieldTextField = app.textFields["employeeSalaryTextField"]
-        employeeSalarytextfieldTextField.tap()
-        employeeSalarytextfieldTextField.typeText("AS23")
+        let employeeAgeTextField = app/*@START_MENU_TOKEN@*/.textFields["employeeAgeTextField"]/*[[".textFields[\"Employee Age\"]",".textFields[\"employeeAgeTextField\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        employeeAgeTextField.tap()
+        employeeAgeTextField.typeText("23")
+        let employeeSalaryTextField = app.textFields["employeeSalaryTextField"]
+        employeeSalaryTextField.tap()
+        employeeSalaryTextField.typeText("AS23")
         let submitButton = app.buttons["Submit"]
         submitButton.tap()
         XCTAssertTrue(app.staticTexts["employeeSalaryErrorLabel"].exists)
-        employeeSalarytextfieldTextField.tap()
-        employeeSalarytextfieldTextField.clearAndEnterText(text: "1234")
+        employeeSalaryTextField.tap()
+        employeeSalaryTextField.clearAndEnterText(text: "1234")
         submitButton.tap()
         XCTAssertFalse(app.staticTexts["employeeSalaryErrorLabel"].exists)
     }
@@ -99,11 +100,8 @@ extension XCUIElement {
             XCTFail("Tried to clear and enter text into a non string value")
             return
         }
-        
         self.tap()
-        
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
-        
         self.typeText(deleteString)
         self.typeText(text)
     }
