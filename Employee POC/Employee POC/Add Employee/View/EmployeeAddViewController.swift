@@ -65,13 +65,13 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
     func validateTextFields() -> Bool {
         let employeeName = employeeNameTextField.text
         if (employeeName == "") {
-            displayErrorLabelFor(displayLabel: employeeNameErrorLabel, and: "Please enter employee name")
+            displayErrorLabelFor(displayLabel: employeeNameErrorLabel, and: NSLocalizedString("NoEmployeeNameError", comment: ""))
             employeeNameTextField.becomeFirstResponder()
             return false
         }
         let validator = Validator()
         if (validator.validateName(name: employeeName!) == false) {
-            displayErrorLabelFor(displayLabel: employeeNameErrorLabel, and: "Please enter valid user name")
+            displayErrorLabelFor(displayLabel: employeeNameErrorLabel, and: NSLocalizedString("EnterValidUserNameError", comment: ""))
             employeeNameTextField.becomeFirstResponder()
             return false
         }
@@ -79,12 +79,12 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
         employeeNameErrorLabel.isHidden = true
         let employeeAge = employeeAgeTextField.text
         if (employeeAge == "") {
-            displayErrorLabelFor(displayLabel: employeeAgeErrorLabel, and: "Please enter employee age")
+            displayErrorLabelFor(displayLabel: employeeAgeErrorLabel, and: NSLocalizedString("NoEmployeeAgeError", comment: ""))
             employeeAgeTextField.becomeFirstResponder()
             return false
         }
         if (validator.validateAge(age: employeeAge!) == false) {
-            displayErrorLabelFor(displayLabel: employeeAgeErrorLabel, and: "Please enter valid age")
+            displayErrorLabelFor(displayLabel: employeeAgeErrorLabel, and: NSLocalizedString("EnterValidAgeError", comment: ""))
             employeeAgeTextField.becomeFirstResponder()
             return false
         }
@@ -92,12 +92,12 @@ class EmployeeAddViewController: UIViewController,UITextFieldDelegate {
         employeeAgeErrorLabel.isHidden = true
         let employeeSalary = employeeSalaryTextField.text
         if (employeeSalary == "") {
-            displayErrorLabelFor(displayLabel: employeeSalaryErrorLabel, and: "Please enter employee salary")
+            displayErrorLabelFor(displayLabel: employeeSalaryErrorLabel, and: NSLocalizedString("NoEmployeeSalaryError", comment: ""))
             employeeSalaryTextField.becomeFirstResponder()
             return false
         }
         if (validator.validateSalary(salary: employeeSalary!) == false) {
-            displayErrorLabelFor(displayLabel: employeeSalaryErrorLabel, and: "Please enter valid salary")
+            displayErrorLabelFor(displayLabel: employeeSalaryErrorLabel, and: NSLocalizedString("EnterValidSalaryError", comment: ""))
             employeeSalaryTextField.becomeFirstResponder()
             return false
         }

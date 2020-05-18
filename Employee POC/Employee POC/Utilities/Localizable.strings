@@ -9,3 +9,9 @@
 "OkButton" = "Ok";
 "EmployeeAddedSuccess" = "Record successfully added";
 "SearchTextFieldPlaceHolderText" = "Search Employees";
+"NoEmployeeNameError" = "Please enter employee name";
+"EnterValidUserNameError" = "Please enter valid user name";
+"NoEmployeeAgeError" = "Please enter employee age";
+"EnterValidAgeError" = "Please enter valid age";
+"NoEmployeeSalaryError" = "Please enter employee salary";
+"EnterValidSalaryError" = "Please enter valid salary";
